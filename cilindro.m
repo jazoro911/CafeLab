@@ -1,5 +1,5 @@
 % Parámetros
-r = 1;             % Radio del cilindro
+r = 10;             % Radio del cilindro
 nTheta = 50;       % Número de divisiones en el ángulo
 nZ = 50;           % Número de divisiones en Z
 h = 2;             % Semialtura (de -h a h, por ejemplo)
