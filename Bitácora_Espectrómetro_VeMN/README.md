@@ -9,4 +9,4 @@ Incluye:
 - Imágenes utilizadas (`.png`)
 - Bibliografía y archivos auxiliares
 
-Este informe complementa los datos experimentales almacenados en `Datos_VeMN`.
+Esto complementa los datos del experimento que están almacenados en `Datos_VeMN`.
