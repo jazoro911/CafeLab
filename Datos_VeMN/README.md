@@ -8,7 +8,7 @@ El procesamiento y la visualización de los datos se realizaron desde de Jupyter
 - `pandas`
 - `seaborn`
 - `matplotlib.pyplot`
-- `savgol_filter` de `scipy` — empleado para reducir el ruido presente en los espectros, mejora que se refleja en los archivos `.csv`.
+- `savgol_filter` de `scipy` — empleado para reducir el ruido presente en los espectros se refleja en los archivos `.csv`.
 
 ## Técnicas espectroscópicas empleadas
 
