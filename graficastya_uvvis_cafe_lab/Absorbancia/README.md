@@ -17,5 +17,5 @@ Ejemplo:
 - `AOxMM/` → Absorbancia de muestra de Oaxaca con molienda mixta.
 - `AVeMN/` → Absorbancia de muestra de Veracruz con molienda normal.
 
-Además, hay una carpeta especial para visualizar varias muestras juntas: `grafico_abs_matrix/`
+Además, hay una carpeta especial para visualizar varias muestras juntas: [`grafico_abs_matrix/`](./grafico_abs_matrix) 
 
