@@ -1,21 +1,30 @@
-# Absorbancia — UV-Vis de muestras de café
+# Gráficas UV-Vis de muestras de café 
 
-Este directorio contiene los archivos de absorbancia obtenidos mediante espectroscopía UV-Vis para distintas muestras de café. Forma parte del análisis realizado en el proyecto **CafeLab**, con el objetivo de caracterizar espectralmente los compuestos presentes en función del origen y tratamiento del grano.
+Este directorio agrupa los análisis espectrales de diferentes muestras de café mediante **espectroscopía UV-Vis**, organizados por tipo de dato (absorbancia y transmitancia). Forma parte del trabajo realizado en el proyecto **CafeLab** liderado por `Lizeth Jazmin Orozco` (colaborador principal), orientado a caracterizar compuestos presentes en el café en función de su región de origen, tipo de molienda y preparación
 
 ---
 
-## Estructura de la carpeta
+##  Estructura del directorio
 
-Cada subcarpeta corresponde a una muestra diferente, codificada según:
+- [`Absorbancia/`](./Absorbancia): Contiene espectros de absorbancia organizados por muestra. Se analizan los picos de absorción para identificar compuestos fenólicos, cafeína, ácidos clorogénicos, entre otros.
+- [`Transmitancia/`](./Transmitancia): Sección destinada a los espectros de transmitancia (en desarrollo).
 
-- **A**: Absorbancia
-- **Ch / Go / Mi / Ve / Ox / Il / Al**: Abreviaturas de los estados o métodos de preparación (ej. Chiapas, Guerrero, Molienda, Veracruz, Oaxaca, etc.)
-- **MG / MN / MM**: Tipo de molienda (Grande, Normal, Mini)
-  
-Ejemplo:
-- `AChMG/` → Absorbancia de muestra de Chiapas con molienda grande.
-- `AOxMM/` → Absorbancia de muestra de Oaxaca con molienda mixta.
-- `AVeMN/` → Absorbancia de muestra de Veracruz con molienda normal.
+Cada subcarpeta dentro de estas secciones representa una muestra codificada por origen y tipo de molienda. Además, se incluyen notebooks para visualizar y procesar múltiples espectros simultáneamente.
 
-Además, hay una carpeta especial para visualizar varias muestras juntas:
+---
+
+## Objetivos
+
+Analizar, comparar y visualizar el comportamiento espectral del café:
+
+- Comparación de perfiles espectrales por región y molienda
+
+---
+
+##  Requisitos técnicos
+
+Recomendado para reproducir los notebooks:
+
+```bash
+pip install pandas matplotlib jupyter
 
