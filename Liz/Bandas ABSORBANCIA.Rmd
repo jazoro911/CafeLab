@@ -1,0 +1,351 @@
+---
+title: "CaféLab"
+author: "J. Orozco"
+date: "2025-05-29"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r}
+# Librerias
+if (!require(PerformanceAnalytics)) install.packages("PerformanceAnalytics")
+if (!require(ggplot2)) install.packages("gggplot2")
+library(PerformanceAnalytics)
+library(readr)
+library(ggplot2)
+library(cowplot) 
+library(dplyr)
+
+```
+
+
+```{r}
+#Lectura de datos
+ACh <- read_csv("AChMN.csv")
+AMi <- read_csv("AMi.csv")
+AGo <- read_csv("AGo.csv")
+AOx <- read_csv("AOx.csv")
+AIlly <- read_csv("AIlly.csv")
+
+
+```
+
+
+```{r}
+#Agrgamos las columnas 75,18 y 225 a AIlly para evitar errores y que tenga las mismas columnas que los demas datos
+AIlly$'75' <- 0
+AIlly$'18' <- 0
+AIlly$'225' <- 0
+
+AIlly <- AIlly[, c('nm',"75", "15", "18", "225")]
+
+```
+
+
+```{r}
+ACh[ACh == 0] <- NA
+AGo[AGo == 0] <- NA
+AMi[AMi ==0] <- NA
+AOx[AOx ==0] <- NA
+AIlly[AIlly ==0] <- NA
+```
+
+
+
+### Relizaremos una grafica que contenga a todas las muestras de café con los rangos donde se deberian de ver las 2 BANDAS.
+## Primero encontremos los rangos de las bandas utilizando los datos de Chiapas (ACh)
+
+```{r}
+gg1 <- ggplot(data=ACh, aes(x=nm,y=`75`)) + 
+    geom_line() +
+    labs(
+      x = "Longitud de Onda (nm)",
+      y = "Absorbancia",
+      ) +
+    theme_minimal() # Aplica un tema limpio
+gg1
+
+```
+
+
+## Veamos que se pueden apreciar dos bandas significativas. 
+* Banda1 : 275 aprox
+* Banda2 : 325 aprox
+
+Daremos un intervalo de confianza del 95%, esto es: 
+
+## Rangos:
+* Banda1 : (270,280) -- en azul
+* Banda2 : (320,330) -- en rojo
+
+
+```{r}
+#------------- BANDA 1---------------------
+gg1_rango_B1 <- gg1 + 
+  geom_vline(xintercept = 270,color = "blue", linetype = "dashed") +
+  geom_vline(xintercept = 280,color = "blue", linetype = "dashed")
+gg1_rango_B1
+
+
+```
+```{r}
+#------------- BANDA 2---------------------
+gg1_rango_B2 <- gg1_rango_B1 + 
+  geom_vline(xintercept = 320,color = "red", linetype = "dashed") +
+  geom_vline(xintercept = 330,color = "red", linetype = "dashed")
+gg1_rango_B2
+
+```
+
+### Ahora juntamos las 4 gráficas faltantes para ver sus comportamientos dentro de los intervalos.
+## Solo se incluye al café Illy en las gráficas de 15 g, esto debido a que no se realizó con 7.5g, 18g ni 22.5g
+
+```{r}
+AMi$grupo <- "AMi"
+AGo$grupo <- "AGo"
+ACh$grupo <- "ACh"
+AOx$grupo <- "AOx"
+AIlly$grupo <- "AIlly"
+
+df_todo <- rbind(ACh,AGo,AIlly,AMi, AOx)
+
+```
+
+### Gráficas de los 3 diferentes diluciones
+
+```{r}
+gg1_todo <- ggplot(df_todo, aes(x = nm, y = `75`, color = grupo)) +
+  geom_line() +
+  labs(title = "Absorbancia de distintas muestras (7.5 g)",
+       x = "Longitud de onda (nm)",
+       y = "Absorbancia",
+       color = "Muestra") +  # Nombre de la leyenda 
+  geom_vline(xintercept = 270,color = "blue", linetype = "dashed") +
+  geom_vline(xintercept = 280,color = "blue", linetype = "dashed") +
+  geom_vline(xintercept = 320,color = "red", linetype = "dashed") +
+  geom_vline(xintercept = 330,color = "red", linetype = "dashed") +
+  theme_minimal() +
+  theme(panel.border = element_rect(color = "black", fill = NA, linewidth = 1))
+gg1_todo
+```
+
+
+```{r}
+gg1_todo <- ggplot(df_todo, aes(x = nm, y = `15`, color = grupo)) +
+  geom_line() +
+  labs(title = "Absorbancia de distintas muestras (15 g)",
+       x = "Longitud de onda (nm)",
+       y = "Absorbancia",
+       color = "Muestra") +  # Nombre de la leyenda 
+  geom_vline(xintercept = 270,color = "blue", linetype = "dashed") +
+  geom_vline(xintercept = 280,color = "blue", linetype = "dashed") +
+  geom_vline(xintercept = 320,color = "red", linetype = "dashed") +
+  geom_vline(xintercept = 330,color = "red", linetype = "dashed") +
+  theme_minimal() +
+  theme(panel.border = element_rect(color = "black", fill = NA, linewidth = 1))
+gg1_todo
+
+```
+
+```{r}
+gg1_todo <- ggplot(df_todo, aes(x = nm, y = `18`, color = grupo)) +
+  geom_line() +
+  labs(title = "Absorbancia de distintas muestras (18 g)",
+       x = "Longitud de onda (nm)",
+       y = "Absorbancia",
+       color = "Muestra") +  # Nombre de la leyenda 
+  geom_vline(xintercept = 270,color = "blue", linetype = "dashed") +
+  geom_vline(xintercept = 280,color = "blue", linetype = "dashed") +
+  geom_vline(xintercept = 320,color = "red", linetype = "dashed") +
+  geom_vline(xintercept = 330,color = "red", linetype = "dashed") +
+  theme_minimal() +
+  theme(panel.border = element_rect(color = "black", fill = NA, linewidth = 1))
+gg1_todo
+
+```
+
+```{r}
+gg1_todo <- ggplot(df_todo, aes(x = nm, y = `225`, color = grupo)) +
+  geom_line() +
+  labs(title = "Absorbancia de distintas muestras (225 g)",
+       x = "Longitud de onda (nm)",
+       y = "Absorbancia",
+       color = "Muestra") +  # Nombre de la leyenda 
+  geom_vline(xintercept = 270,color = "blue", linetype = "dashed") +
+  geom_vline(xintercept = 280,color = "blue", linetype = "dashed") +
+  geom_vline(xintercept = 320,color = "red", linetype = "dashed") +
+  geom_vline(xintercept = 330,color = "red", linetype = "dashed") +
+  theme_minimal() +
+  theme(panel.border = element_rect(color = "black", fill = NA, linewidth = 1))
+gg1_todo
+
+```
+### ZOOM
+## Acotemos los datos de [270,330]
+
+```{r}
+AGo_filtrado <- AGo %>%
+  filter(nm >= 270, nm <= 330)
+
+ACh_filtrado <- ACh %>%
+  filter(nm >= 270, nm <= 330)
+
+AIlly_filtrado <- AIlly %>%
+  filter(nm >= 270, nm <= 330)
+
+AMi_filtrado <- AMi %>%
+  filter(nm >= 270, nm <= 330)
+
+AOx_filtrado <- AOx %>%
+  filter(nm >= 270, nm <= 330)
+
+```
+
+## Creamos un data frame con todos los datos filtrados
+
+```{r}
+AMi_filtrado$grupo <- "AMi"
+AGo_filtrado$grupo <- "AGo"
+ACh_filtrado$grupo <- "ACh"
+AOx_filtrado$grupo <- "AOx"
+AIlly_filtrado$grupo <- "AIlly"
+
+df_todo_filtrado <- rbind(ACh_filtrado,AGo_filtrado,AIlly_filtrado,AMi_filtrado, AOx_filtrado)
+```
+
+
+```{r}
+gg1_todo_filtrado_75 <- ggplot(df_todo_filtrado, aes(x = nm, y = `75`, color = grupo)) +
+  geom_line() +
+  labs(title = "Absorbancia de distintas muestras (7.5 g)",
+       x = "Longitud de onda (nm)",
+       y = "Absorbancia",
+       color = "Muestra") +  # Nombre de la leyenda 
+  geom_vline(xintercept = 270,color = "blue", linetype = "dashed") +
+  geom_vline(xintercept = 280,color = "blue", linetype = "dashed") +
+  geom_vline(xintercept = 320,color = "red", linetype = "dashed") +
+  geom_vline(xintercept = 330,color = "red", linetype = "dashed") +
+  theme_minimal() +
+  theme(panel.border = element_rect(color = "black", fill = NA, linewidth = 1))
+gg1_todo_filtrado_75
+
+#------------------------------------------------------------------
+gg1_todo_filtrado_15 <- ggplot(df_todo_filtrado, aes(x = nm, y = `15`, color = grupo)) +
+  geom_line() +
+  labs(title = "Absorbancia de distintas muestras (15 g)",
+       x = "Longitud de onda (nm)",
+       y = "Absorbancia",
+       color = "Muestra") +  # Nombre de la leyenda 
+  geom_vline(xintercept = 270,color = "blue", linetype = "dashed") +
+  geom_vline(xintercept = 280,color = "blue", linetype = "dashed") +
+  geom_vline(xintercept = 320,color = "red", linetype = "dashed") +
+  geom_vline(xintercept = 330,color = "red", linetype = "dashed") +
+  theme_minimal() +
+  theme(panel.border = element_rect(color = "black", fill = NA, linewidth = 1))
+gg1_todo_filtrado_15
+
+#------------------------------------------------------------------------------
+
+gg1_todo_filtrado_18 <- ggplot(df_todo_filtrado, aes(x = nm, y = `18`, color = grupo)) +
+  geom_line() +
+  labs(title = "Absorbancia de distintas muestras (18 g)",
+       x = "Longitud de onda (nm)",
+       y = "Absorbancia",
+       color = "Muestra") +  # Nombre de la leyenda 
+  geom_vline(xintercept = 270,color = "blue", linetype = "dashed") +
+  geom_vline(xintercept = 280,color = "blue", linetype = "dashed") +
+  geom_vline(xintercept = 320,color = "red", linetype = "dashed") +
+  geom_vline(xintercept = 330,color = "red", linetype = "dashed") +
+  theme_minimal() +
+  theme(panel.border = element_rect(color = "black", fill = NA, linewidth = 1))
+gg1_todo_filtrado_18
+
+#----------------------------------------------------------------------
+
+gg1_todo_filtrado_225 <- ggplot(df_todo_filtrado, aes(x = nm, y = `225`, color = grupo)) +
+  geom_line() +
+  labs(title = "Absorbancia de distintas muestras (225 g)",
+       x = "Longitud de onda (nm)",
+       y = "Absorbancia",
+       color = "Muestra") +  # Nombre de la leyenda 
+  geom_vline(xintercept = 270,color = "blue", linetype = "dashed") +
+  geom_vline(xintercept = 280,color = "blue", linetype = "dashed") +
+  geom_vline(xintercept = 320,color = "red", linetype = "dashed") +
+  geom_vline(xintercept = 330,color = "red", linetype = "dashed") +
+  theme_minimal() +
+  theme(panel.border = element_rect(color = "black", fill = NA, linewidth = 1))
+gg1_todo_filtrado_225
+```
+
+```{r}
+df_todo_filtrado[df_todo_filtrado == NA] <- 0
+```
+
+
+```{r}
+df_max_grupo_75 <- df_todo_filtrado %>%
+  group_by(grupo) %>%
+  filter(`75` == max(`75`, na.rm = TRUE))
+
+df_max_grupo_15 <- df_todo_filtrado %>%
+  group_by(grupo) %>%
+  filter(`15` == max(`15`, na.rm = TRUE))
+
+df_max_grupo_18 <- df_todo_filtrado %>%
+  group_by(grupo) %>%
+  filter(`18` == max(`18`, na.rm = TRUE))
+
+df_max_grupo_225 <- df_todo_filtrado %>%
+  group_by(grupo) %>%
+  filter(`225` == max(`225`, na.rm = TRUE))
+
+
+df_max_grupo_75
+df_max_grupo_15
+df_max_grupo_18
+df_max_grupo_225
+
+```
+## Máximos de bandas
+# (veamos que algunos máximos se repiten). 
+# Para (7.5g) 
+* AIlly - 
+* ACh - (272.0,272.5,273,273.5,274,275,275.5,276)nm / 0.376 
+* AGo - (272.5,273)nm / 0.360
+* AMi - (277.5,278,278.5,279)nm / 0.287
+* AOx - (277.5)nm / 0.307
+
+# Para (15g) 
+* AIlly - (272.0,272.5)nm / 0.953
+* ACh - (274.0,274.5,275.0,276.5,277,277.5,278.0,278.5,279.0)nm / 0.792 
+* AGo - (273.0)nm / 0.898
+* AMi - (270.5,271.0)nm / 0.713
+* AOx - (279.0,279.5)nm / 1.068
+
+# Para (18g) 
+* AIlly - 
+* ACh - (275.0,275.5)nm / 0.521
+* AGo - (273.0,273.5)nm / 0.774
+* AMi - (276.5,278.5,279.0,279.5,)nm / 0.550
+* AOx - (277.0,277.5,278.0,278.5)nm / 0.987
+
+```{r}
+
+```
+
+
+
+
+
+
+
+
+
+
+
