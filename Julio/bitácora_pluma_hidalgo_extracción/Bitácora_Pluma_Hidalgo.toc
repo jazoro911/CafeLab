@@ -1,0 +1,43 @@
+\babel@toc {spanish}{}\relax 
+\contentsline {section}{\numberline {1}Nuevo café: Pluma Hidalgo (Oaxaca)}{2}{section.1}%
+\contentsline {section}{\numberline {2}Pastilas para \textcolor {orange(colorwheel)}{\textbf {reflectancia}} y \textcolor {Cerulean}{\textbf {fluorescencia}}}{2}{section.2}%
+\contentsline {section}{\numberline {3}Extracción Pluma Hidalgo}{4}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Pesos aproximados en la balanza}{4}{subsection.3.1}%
+\contentsline {section}{\numberline {4}Ecuación de concentración masa - volumen}{4}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Ejemplo práctico para 18\,g}{4}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Brew ratio (relación café: agua)}{5}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}Caso en donde tengamos poco café}{5}{subsection.4.3}%
+\contentsline {section}{\numberline {5}Extracción Café Colombia selecto}{6}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Empleo de la ecuación de concentración masa - volumen (no hay suficiente café)}{6}{subsection.5.1}%
+\contentsline {section}{\numberline {6}Extracción Café de Pahuatlán (Puebla)}{7}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Pesos aproximados en la balanza}{7}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}Extracción en prensa francesa}{7}{subsection.6.2}%
+\contentsline {subsubsection}{\numberline {6.2.1}Ratios de cada gramaje}{7}{subsubsection.6.2.1}%
+\contentsline {subsection}{\numberline {6.3}Pesos aproximados en la balanza}{8}{subsection.6.3}%
+\contentsline {section}{\numberline {7}Extracción Colombia gourmet (G)}{8}{section.7}%
+\contentsline {subsection}{\numberline {7.1}Empleo de la ecuación de concentración masa - volumen (no hay suficiente café)}{8}{subsection.7.1}%
+\contentsline {section}{\numberline {8}Pruebas futuras y ruta de trabajo posterior}{9}{section.8}%
+\contentsline {subsection}{\numberline {8.1}Seguir analizando los datos ya sea con Origin o Python. ML de Lizeth muy bueno}{9}{subsection.8.1}%
+\contentsline {subsection}{\numberline {8.2}Reunirnos con el Dr.~Palomino para las mediciones de reflectancia y fluorescencia}{9}{subsection.8.2}%
+\contentsline {subsection}{\numberline {8.3}Posible medición de difracción de rayos X}{9}{subsection.8.3}%
+\contentsline {subsection}{\numberline {8.4}Pruebas futuras: contenido de azúcar usando un refractrómetro}{9}{subsection.8.4}%
+\contentsline {subsection}{\numberline {8.5}¿Qué proceso de café es preferible adquirir? Lavado, honey o natural}{10}{subsection.8.5}%
+\contentsline {subsection}{\numberline {8.6}Necesitamos un medidor de temperatura}{10}{subsection.8.6}%
+\contentsline {subsection}{\numberline {8.7}Espectroscopía infrarroja}{10}{subsection.8.7}%
+\contentsline {subsection}{\numberline {8.8}Bandas de espectroscopía Raman}{10}{subsection.8.8}%
+\contentsline {section}{\numberline {9}Extracción Tancítaro - Michoacán (Fecha: 15/10/2025)}{10}{section.9}%
+\contentsline {subsection}{\numberline {9.1}Gramajes}{11}{subsection.9.1}%
+\contentsline {subsection}{\numberline {9.2}Resultados de las extracciones}{15}{subsection.9.2}%
+\contentsline {subsubsection}{\numberline {9.2.1}Molienda}{15}{subsubsection.9.2.1}%
+\contentsline {subsubsection}{\numberline {9.2.2}7.5\,g}{15}{subsubsection.9.2.2}%
+\contentsline {subsubsection}{\numberline {9.2.3}15\,g}{16}{subsubsection.9.2.3}%
+\contentsline {subsubsection}{\numberline {9.2.4}18\,g}{16}{subsubsection.9.2.4}%
+\contentsline {subsubsection}{\numberline {9.2.5}22.5\,g}{17}{subsubsection.9.2.5}%
+\contentsline {section}{\numberline {10}Extracción Café de especialidad - Espíritu café (Fecha: 16/10/2025)}{17}{section.10}%
+\contentsline {subsection}{\numberline {10.1}Gramajes}{18}{subsection.10.1}%
+\contentsline {subsection}{\numberline {10.2}Resultados de las extracciones}{22}{subsection.10.2}%
+\contentsline {subsubsection}{\numberline {10.2.1}Molienda}{22}{subsubsection.10.2.1}%
+\contentsline {subsubsection}{\numberline {10.2.2}7.5\,g}{22}{subsubsection.10.2.2}%
+\contentsline {subsubsection}{\numberline {10.2.3}15\,g}{23}{subsubsection.10.2.3}%
+\contentsline {subsubsection}{\numberline {10.2.4}18\,g}{23}{subsubsection.10.2.4}%
+\contentsline {subsubsection}{\numberline {10.2.5}22.5\,g}{24}{subsubsection.10.2.5}%
